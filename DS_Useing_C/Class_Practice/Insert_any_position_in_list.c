@@ -86,6 +86,10 @@ void insert_any(SLL **list,int val,int po)
         node->next=prev->next;
         prev->next=node;
     }
+    if(count+1==po){ //this is for last insert
+        temp->next=node;
+        node->next=NULL;
+    }
     
 }
 int main()
