@@ -21,9 +21,10 @@ void display_sll(SLL *list1)
 {
     while(list1)
     {
-        printf("%d\n", list1->data);
+        printf("%d -> ", list1->data);
         list1=list1->next;
     }
+    printf("NULL\n");
 }
 void create_sll(SLL **list1)
 {
