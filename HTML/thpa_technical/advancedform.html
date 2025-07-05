@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>advanced form html practis</title>
+    <style>
+      body{
+        background-color: aquamarine;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <b>
+    <form action="#">
+        <div>
+            <label for="range">Range: </label>
+            <input type="range" name-="volume" min="0" max="100" value="90"/>   
+        </div>
+        <br>
+        <div>
+          <label for="birthday">BirthDay: </label>
+          <input type="date" name="birthday">
+        </div>
+        <br>
+        <div>
+          <label for="appointmentType">Appointment Time: </label>
+          <input type="time" name="appointmentType">
+        </div>
+        <br>
+        <div>
+          <label for="color">Favorite color:        </label>
+          <input type="color" name="color">
+        </div>
+        <br>
+        <div>
+          <label for="webside">Webside :     </label>
+          <input type="url" name="webside" placeholder="Enter webside">
+        </div>
+        <br>
+        <div>
+          <label for="searchquary">SearchQuery: </label>
+          <input type="search" name="searchquary" placeholder="search..">
+        </div>
+        <br>
+        <div>
+          <label for="expiredate">Month & Year : </label>
+          <input type="month" name="expiredate">
+        </div>
+        <br>
+        <div>
+          <label for="week">Vacation: </label>
+          <input type="week" name="week">
+        </div>
+        <fieldset>
+          <legend>Personal Info</legend>
+            <div>
+            <label for="username">Username </label>
+            <input type="text" class="sameclas" id="username"\>
+        </div>
+        <br>
+        <div>
+            <label for="email">Enter your email </label>
+            <input type="email" class="sameclas" id="email" name="email" required size="30" value="laxman032@gmail.com">
+        </div>
+        <br>
+        <div>
+            <label for="textarea">Message</label>
+            <textarea name="" id="textarea" cols="30" rows="10" placeholder="Enter comments"></textarea>
+        </div> 
+        <br>
+        <div>
+            <label for="pass">Enter password</label>
+            <input type="password" id="pass" placeholder="Enter your password" name="email" required size="10">
+        </div>
+        <br>
+        <div>
+            <label for="num">Enter number</label>
+            <input type="number" id="num" max="5" min="1">
+        </div>
+        <br>
+        <div>
+            <label for="gender">Gender </label>
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="fema">Female
+        </div>
+        <br>
+        <div>
+
+            <label for="hobbies">Fav Hobbies </label>
+            <input type="checkbox" name="interest" value="music">Music
+            <input type="checkbox" name="interest" value="music">Sports
+        </div>
+        <br>
+        <div>
+            <label for="country">Fav country </label>v
+            <select name="coun" id="coun">
+                <option value="usa">US</option>
+                <option value="canada">Canada</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="country">Select a country :</label>
+            <input type="text" id="coun" name="coun" list="countries">
+            <datalist id="countries">
+                <option value="USA"></option>
+                <option value="Canada"></option>
+                <option value="UK"></option>
+                <option value="Australia"></option>
+            </datalist>
+        </div>
+        <br>
+        <div>
+            <label for="file">Select File </label>
+            <input type="file" name="fileupload">
+        </div>
+        <br>
+         <div>
+            <input type="submit" value="submit" />
+        </div>
+        </fieldset>
+      </form>
+  </b>
+  </body>
+</html>
