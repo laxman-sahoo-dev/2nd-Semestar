@@ -22,6 +22,7 @@ int main()
 {
     child c1;
     parent p1;
+    
     p1.parent_fun();
     c1.parent_fun();          // showding of base class function
     c1.parent ::parent_fun(); // Removing the showding
