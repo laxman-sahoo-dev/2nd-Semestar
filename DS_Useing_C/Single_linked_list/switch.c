@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> 
 typedef struct single_linked_list
 {
     int data;
@@ -119,6 +119,7 @@ int main()
     int choice, val, po, num;
 
     printf("\n\tMENU\t\n");
+    printf("_________________");
     printf("1-Insert\n 2- Delete a given number- \n 3-Display\n 4- Insert any. \n5- Delete any.\n6-Exit\n");
     while (1)
     {
