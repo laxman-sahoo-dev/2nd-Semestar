@@ -37,13 +37,76 @@ void insert_queue(queue *qu , int val)
     }
     qu->rear->next=new_node;
     qu->rear=new_node;
-    printf("Insertion Sucessfull..");
+    printf("Insertion Sucessfull..\n");
 }
-void delete_queue(queue *qu)
+int delete_queue(queue *qu)
 {
-    
+    int popval=0;
+    node *temp=qu->front;
+    if(qu->front==NULL)
+    {
+        printf("Linked queue is empty..\n");
+        exit(1);
+    }
+    else
+    {
+        popval=temp->info;
+        qu->front=qu->front->next;
+        free(temp);
+    }
+    if(qu->front==NULL)
+    {
+        qu->rear=NULL;
+    }
+    return popval;
+}
+int traverse_queue(queue *qu)
+{
+    node *temp=qu->front;
+    if(qu->front==NULL)
+    {
+        printf("Linear Queue is empty");
+    }
+    temp=qu->front;
+    printf("Linked list element are- \n");
+    while(temp)
+    {
+        printf("%d\n",temp->info);
+        temp=temp->next;
+    }
 }
 int main()
 {
-
+    queue qu;
+    int num,op;
+    init_queue(&qu);
+    
+        printf("\tQueue Menu\t");
+        printf("\n1-Insert- \n2=Delete\n3-Traverse\n4-Quit-\n");
+        
+    while (1)
+    {
+        printf("Enter Option- ");
+        scanf("%d",&op);
+        switch(op)
+        {
+            case 1:
+                printf("Enter the data to push- ");
+                scanf("%d",&num);
+                insert_queue(&qu,num);
+                break;
+            case 2:
+                num=delete_queue(&qu);
+                break;
+            case 3:
+                traverse_queue(&qu);
+                break;
+            case 4:
+                exit(0);
+                break;
+            default:
+                printf("Invalid Option");
+        }
+    }
+    
 } 
