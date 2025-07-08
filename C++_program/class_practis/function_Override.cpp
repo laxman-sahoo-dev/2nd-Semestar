@@ -14,7 +14,7 @@ class child : public parent
 public:
     void parent_fun()
     {
-        cout << "This is child class" << endl; // Function overriding
+        //cout << "This is child class" << endl; // Function overriding
     }
 };
 
