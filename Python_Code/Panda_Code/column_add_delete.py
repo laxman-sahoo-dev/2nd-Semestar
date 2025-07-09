@@ -21,7 +21,7 @@ dframe['age_new']=dframe['age']+10
 print("New data frame after adding a new coloum \n",dframe)
 
 #Delete a single column
-df=dframe.drop('age',axis=1)
+df=dframe.drop('adress',axis=1)
 print("After deleting data frame: \n",df)
 
 #Delete multiple coloum
