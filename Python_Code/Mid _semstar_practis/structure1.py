@@ -1,4 +1,4 @@
-''''r=int(input("Enter the no of rows: "))
+r=int(input("Enter the no of rows: "))
 for i in range(1,r+1):
 	j=r-i
 	while(j>=1):
@@ -13,5 +13,3 @@ for i in range(1,r+1):
 		print(f" {c} ",end="")
 		c=c-1
 	print()
-'''
-print("dkjknjk")
