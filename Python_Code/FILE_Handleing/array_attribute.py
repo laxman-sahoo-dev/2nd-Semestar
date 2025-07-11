@@ -1,0 +1,15 @@
+import numpy as np
+a1=np.array([1,2,3,4],dtype=np.int32)
+a2=np.array([1.1,2.2,3.3])
+a3=np.array(['laxman','kanha'])
+print(a3.dtype)
+print(a1.dtype)
+print(a2.dtype)
+print(a1.itemsize)
+print(a2.itemsize)
+print(a3.itemsize)
+print(a1.nbytes)
+print(a2.nbytes)
+print(a1.data)
+print(a2.data)
+
