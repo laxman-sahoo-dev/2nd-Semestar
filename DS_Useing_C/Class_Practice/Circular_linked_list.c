@@ -20,12 +20,12 @@ cll *traverse_cll(cll *list)
     {
         temp = temp->next;
     }
-    return temp;  // Return the last node
+    return temp; // Return the last node
 }
 
 // Function to display the circular linked list
 void display_cll(cll *list1)
-{   
+{
     if (list1 == NULL)
     {
         printf("List is empty.\n");
@@ -38,7 +38,7 @@ void display_cll(cll *list1)
     {
         printf("%d -> ", temp->data);
         temp = temp->next;
-    } while(temp != list1);
+    } while (temp != list1);
     printf("NULL\n");
 }
 
@@ -46,13 +46,13 @@ void display_cll(cll *list1)
 void create(cll **list1)
 {
     int item;
-    cll *node1 = NULL; 
+    cll *node1 = NULL;
     cll *last = NULL;
-    
+
     printf("Please enter the data- ");
     scanf("%d", &item);
 
-    node1 = (cll*)malloc(sizeof(cll));
+    node1 = (cll *)malloc(sizeof(cll));
     if (node1 == NULL)
     {
         printf("\nNode creation failed");
@@ -62,10 +62,10 @@ void create(cll **list1)
     node1->data = item;
     node1->next = NULL;
 
-    if (*list1 == NULL)  // If list is empty, initialize it
+    if (*list1 == NULL) // If list is empty, initialize it
     {
         *list1 = node1;
-        node1->next = *list1;  // Points to itself
+        node1->next = *list1; // Points to itself
     }
     else
     {
@@ -86,7 +86,7 @@ void delete_element(cll **list1, int sdata)
     // Deleting head node
     if (temp->data == sdata)
     {
-        if (temp->next == temp)  // Only one node in list
+        if (temp->next == temp) // Only one node in list
         {
             free(temp);
             *list1 = NULL;
@@ -123,12 +123,12 @@ void insert(cll **list1, int po)
     cll *curr = NULL, *last = traverse_cll(*list1), *temp = *list1, *prev = NULL;
     int count;
 
-    curr = (cll*)malloc(sizeof(cll));
+    curr = (cll *)malloc(sizeof(cll));
     printf("Enter data: ");
     scanf("%d", &curr->data);
     curr->next = NULL;
 
-    if (*list1 == NULL)  // Empty list
+    if (*list1 == NULL) // Empty list
     {
         curr->next = curr;
         *list1 = curr;
@@ -219,7 +219,7 @@ void free_list(cll *list)
 
     cll *temp = list, *fre;
     do
-    {   
+    {
         fre = temp;
         temp = temp->next;
         free(fre);

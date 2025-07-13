@@ -21,10 +21,29 @@ char pop()
     }
     return(stack[top--]);
 }
-char presedense(char )
+char presedense(char ch )
 {
-    
+    switch(ch)
+    {
+        case '^':
+            if(stack[top]=='-'||stack[top]=='+'||stack[top]=='*'||stack[top]=='/')
+            {
+                push('^');
+            }
+        case '*':
+            if(stack[top]=='-'||stack[top]=='+')
+            {
+                push('*');
+            }
+        
+    }
 }
+ void create(char ch ,char *arr)
+ {
+    printf("Enter the character to push- \n");
+    top++;
+    scanf("%d",&arr[top]);
+ }
 void infinix_to_postfix(char *ptr1 ,char *ptr2)
 {
     int i=0,j=0;
@@ -45,10 +64,19 @@ void infinix_to_postfix(char *ptr1 ,char *ptr2)
         }
         else
         {  
-            while(stack[top]!=-1)
+            while(stack[top]!=-1 && presedense(ptr1[j]))
             {
                 
             }
         }
     }
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    //char arr[y];
+    printf("Enter the infinix form - ");
+
 }

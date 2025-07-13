@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include <stdlib.h>
-#in
 typedef struct Node
 {
-    char name[20];
-    
-};
+    char ch;
+    struct Node *next;    
+}node;
+ node *top=NULL;
 int main()
 {
-    
+    char arr[20];
+    printf("Enter the string: ");
 }
