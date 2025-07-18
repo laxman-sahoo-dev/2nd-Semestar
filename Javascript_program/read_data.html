@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        How to read data using javascript
+    </title>
+    <script type="text/javascript">
+        function readData()
+        {
+            let x;
+            x=Number(document.getElementById("text1").value);
+            x+=10;
+            document.getElementById("text2").value=x;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="#">
+    <p>
+        <b>Enter number : </b><input type="text" id="text1" name="text1" size="30"><br>
+        <b>Number after increment:</b><input type="text" id="text2" name="text2" size="30">
+        <input type="button" value="press me" id="button" onclick="readData()" >
+    </p>
+    </form>
+</body>
+</html>
