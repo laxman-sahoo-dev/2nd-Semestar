@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Data Submission Form</title>
+</head>
+<body>
+
+    <h2 align="center">Employee Data Submission Form</h2>
+
+    <form action="submit_employee.php" method="post">
+        <table border="1" align="center" cellpadding="8">
+            <tr>
+                <th>Field</th>
+                <th>Input</th>
+            </tr>
+
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="emp_name" required></td>
+            </tr>
+
+            <tr>
+                <td>ID No:</td>
+                <td><input type="text" name="emp_id" required></td>
+            </tr>
+
+            <tr>
+                <td>Designation:</td>
+                <td><input type="text" name="designation" required></td>
+            </tr>
+
+            <tr>
+                <td>Date of Birth:</td>
+                <td><input type="date" name="dob" required></td>
+            </tr>
+
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <b>Male</b><input type="radio" name="gender" value="Male" required> 
+                    <b>Female</b><input type="radio" name="gender" value="Female"> 
+                    <b>Other</b><input type="radio" name="gender" value="Other"> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>Department:</td>
+                <td>
+                    <select name="department" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                        <option value="IT">IT</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Salary:</td>
+                <td><input type="number" name="salary" id="salary" oninput="calculateNetSalary()" required></td>
+            </tr>
+
+            <tr>
+                <td>Deduction (%):</td>
+                <td><input type="number" name="deduction" id="deduction" min="0" max="100" oninput="calculateNetSalary()" required></td>
+            </tr>
+
+            <tr>
+                <td>Salary After Deduction:</td>
+                <td><input type="number" name="net_salary" id="net_salary" readonly></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset" onclick="clearNetSalary()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function calculateNetSalary() {
+            var salary = parseFloat(document.getElementById("salary").value) || 0;
+            var deduction = parseFloat(document.getElementById("deduction").value) || 0;
+
+            if (deduction >= 0 && deduction <= 100) {
+                var net = salary - (salary * deduction / 100);
+                document.getElementById("net_salary").value = net.toFixed(2);
+            }
+        }
+
+        function clearNetSalary() {
+            document.getElementById("net_salary").value = '';
+        }
+    </script>
+
+</body>
+</html>

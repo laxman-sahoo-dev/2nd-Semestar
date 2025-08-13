@@ -16,4 +16,3 @@ for i in demo_arr:
     cum_sum.append(sum)
 print("Cumulative Sum= ",sum)
 print("cumulative_array= ",cum_sum)
-print(type(demo_arr))

@@ -154,7 +154,7 @@ void insert(sll **list1, int po)
     }
     else
     {
-        int i = 1;
+        int i = 0;
 
         // Traverse to the target position
         while (po != i && temp != NULL)

@@ -1,5 +1,5 @@
 import numpy as np
-arr=np.array([[11,22,33],[44,55,66]])
+arr=np.array([[11,22,33],[44,55,66]],dtype=np.int32)
 print(arr)
 print("Number of dimensions : ",arr.ndim)
 print("Shape of the array: ",arr.shape)

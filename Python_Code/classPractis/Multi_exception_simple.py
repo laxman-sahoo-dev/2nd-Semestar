@@ -12,4 +12,4 @@ bank = {'abc': 5000, 'xyz': 3000, 'pqr': 1800}
 try:
     check(bank)
 except MyException as me:
-    
+    print(me)

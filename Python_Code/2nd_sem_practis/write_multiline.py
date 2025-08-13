@@ -1,0 +1,11 @@
+fp=open("myfile4.txt","w")
+data=input("Enter data-")
+while(data!='@'):
+    fp.write(data+'\n')
+    data=input()
+fp.close()
+print("File content are-\n")
+fp=open("myfile4.txt","r")
+data=fp.read()
+print(data)
+fp.close()

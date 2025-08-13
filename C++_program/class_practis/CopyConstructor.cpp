@@ -40,6 +40,6 @@ int main()
     p1.display();
 
     // Use the copy constructor
-    Person p2(p1);
+    Person p2=p1;
     p2.display();
 } 

@@ -3,7 +3,7 @@ using namespace std;
 class sample{
     private:
         int x;
-        friend void display(class sample);
+        friend void display(sample);
     public:
         void getdata();
 };
@@ -12,7 +12,7 @@ void sample::getdata()
     cout<<"Enter the value for x = ";
     cin>>x;
 }
-void display(class sample abc)
+void display(sample abc)
 {
     cout<<"Entered number is : "<<abc.x;
 }

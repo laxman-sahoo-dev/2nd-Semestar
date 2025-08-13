@@ -19,11 +19,13 @@ print("New dataframe after adding new colum:\n",dframe)
 #add a column reflecting to existing column
 dframe['age_new']=dframe['age']+10
 print("New data frame after adding a new coloum \n",dframe)
-
+df=dframe[dframe['age']>22]
+print("\n\nselect a perticular condition\n\n",df)
 #Delete a single column
-df=dframe.drop('adress',axis=1)
-print("After deleting data frame: \n",df)
+dframe.drop('adress',axis=1)
+print("After deleting data frame: \n",dframe.drop('adress',axis=1))
 
 #Delete multiple coloum
-df=dframe.drop(['adress','country'],axis=1)
-print("After deleting multiple column-\n",df)
+dframe.drop(['age','country'],axis=1 ,inplace=True)
+print("After deleting multiple column-\n",dframe)
+print(dframe.isnull())

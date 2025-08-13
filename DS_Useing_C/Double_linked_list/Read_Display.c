@@ -33,7 +33,6 @@ dll *create_dll(dll **list1, int info)
         last = traverse_dll(*list1);
         curr->prev = last;
         last->next = curr;
-        return last->next;
     }
 }
 void display_forward(dll *node)
@@ -66,7 +65,8 @@ int main()
         int info;
         printf("Enter data: ");
         scanf("%d", &info);
-        last1 = create_dll(&list, info);
+        create_dll(&list, info);
+        last1 = traverse_dll(list);
     }
 
     display_forward(list);

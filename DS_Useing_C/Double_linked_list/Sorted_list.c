@@ -4,7 +4,7 @@
 typedef struct single_link_list
 {
     int data;
-    struct single_link_list *next;
+    struct single_link_list *next,*prev;
 } sll;
 
 void create_sorted_sll(sll **list1)
@@ -22,27 +22,35 @@ void create_sorted_sll(sll **list1)
     scanf("%d", &item);
     node->data = item;
     node->next = NULL;
-
+    node->prev=NULL;
     // Empty list or insert at beginning
     if (*list1 == NULL || item < (*list1)->data)
     {
         node->next = *list1;
+        node->prev=NULL;
+        if(*list1!=NULL)
+            (*list1)->prev=node;
         *list1 = node;
         return;
     }
 
-    sll *prev = NULL;
+    sll *prev1 = NULL;
     sll *curr = *list1;
 
     while (curr != NULL && curr->data <= item)
     {
-        prev = curr;
+        prev1 = curr;
         curr = curr->next;
     }
 
     // Insert in between or at the end
     node->next = curr;
-    prev->next = node;
+    prev1->next = node;
+    node->prev=prev1;
+    if(curr!=NULL)
+    {
+        curr->prev=node;
+    }
 }
 
 void display(sll *list)
@@ -65,8 +73,7 @@ int main()
     {
         create_sorted_sll(&list);
         printf("Do you want to create another node? (y/n): ");
-        getchar();
-        scanf("%c", &ch);
+        scanf(" %c", &ch);
     } while (ch == 'y' || ch == 'Y');
 
     display(list);

@@ -2,87 +2,122 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct merge_link_list{
+typedef struct merge_link_list
+{
     int data;
     struct merge_link_list *next;
-}mll;
-void create(mll*);
-void merge(mll*,mll*,mll*);
-void display(mll*);
-
-int main() {
-    mll *node1,*node2,*node3;
-    node1=(mll*)malloc(sizeof(mll));
-    if(node1==NULL){
-        printf("Out of memory space!");
-        exit(1);
-    }
-    node2=(mll*)malloc(sizeof(mll));
-    if(node2==NULL){
-        printf("Out of memory space!!");
-        exit(1);
-    }
-    node3=(mll*)malloc(sizeof(mll));
-    if(node3==NULL){
-        printf("Out of memory space !!!");
-        exit(1);
-    }
-    create(node1);
-    create(node2);
-    merge (node1,node2,node3);
+} mll;
+void create(mll **);
+void merge(mll *, mll *, mll **);
+void display(mll *);
+mll *traverse_sll(mll *);
+int main()
+{
+    mll *list1 = NULL, *list2 = NULL, *list3=NULL;
+    printf("enter data for first link list-\n ");
+    create(&list1);
+    printf("enter data for second link list-\n ");
+    create(&list2);
+    merge(list1, list2,&list3);
     printf("Display the node1=\n");
-    display(node1);
-    printf("Display the node2=\n");
-    display(node2);
+    display(list1);
+    printf("Display th node2=\n");
+    display(list2);
     printf("Display after merge node1&node2= \n");
-    display(node3);
+    display(list3);
     return 0;
 }
-void create(mll *node){
+mll *traverse_sll(mll *list)
+{
+    mll *prev = NULL;
+    while (list != NULL)
+    {
+        prev = list;
+        list = list->next;
+    }
+    return prev;
+}
+void create(mll **list)
+{
+    int item;
     char ch;
-    printf("Enter the value for first node- ");
-    scanf("%d",&node->data);
-    node->next=NULL;
-    printf("Do you want to enter another value(Y/N)=");
-    while ((ch = getchar()) != '\n' && ch != EOF);
-    ch=getchar();
-    while(ch=='y'||ch=='Y'){
-        node->next=(mll*)malloc(sizeof(mll));
-        if(node->next==NULL){
-            printf("Out of memory space..");
+
+    do
+    {
+        printf("Enter data: ");
+        scanf("%d", &item);
+
+        mll *newNode = (mll *)malloc(sizeof(mll));
+        if (!newNode)
+        {
+            printf("Memory allocation failed.\n");
+            return;
         }
-        node=node->next;
-        printf("Enter value for another node= ");
-        scanf("%d",&node->data);
-        node->next=NULL;
-        printf("Do you want to continue:(Y/N) ");
-        while ((ch = getchar()) != '\n' && ch != EOF);
-        ch=getchar();
-    }
+
+        newNode->data = item;
+        newNode->next = NULL;
+
+        if (*list == NULL)
+        {
+            *list = newNode;
+        }
+        else
+        {
+            mll *last = traverse_sll(*list);
+            last->next = newNode;
+        }
+
+        printf("Add another node? (Y/N): ");
+        scanf(" %c", &ch);
+
+    } while (ch == 'Y' || ch == 'y');
 }
-void merge(mll *n1,mll *n2,mll *n3){
-    n3->data=n1->data;
-    n3->next=NULL;
-    n1=n1->next;
-    while(n1!=NULL){
-        n3->next=(mll*)malloc(sizeof(mll));
-        n3=n3->next;
-        n3->data=n1->data;
+
+void merge(mll *n1, mll *n2, mll **n3)
+{
+    mll *tail=NULL;
+    while (n1!=NULL)
+    {
+        mll *newnode=(mll*)malloc(sizeof(mll));
+        newnode->data=n1->data;
+        newnode->next=NULL;
+        if((*n3)==NULL)
+        {
+            tail=newnode;
+            (*n3)=newnode;
+        }
+        else
+        {
+            tail->next=newnode;
+            tail=newnode;
+        }
         n1=n1->next;
-        n3->next=NULL;
     }
-    while(n2!=NULL){
-        n3->next=(mll*)malloc(sizeof(mll));
-        n3=n3->next;
-        n3->data=n2->data;
+    while (n2!=NULL)
+    {
+        mll *newnode=(mll*)malloc(sizeof(mll));
+        newnode->data=n2->data;
+        newnode->next=NULL;
+        if((*n3)==NULL)
+        {
+            tail=newnode;
+            (*n3)=newnode;
+        }
+        else
+        {
+            tail->next=newnode;
+            tail=newnode;
+        }
         n2=n2->next;
-        n3->next=NULL;
     }
+    
 }
-void display(mll *node){
-    while(node!=NULL){
-        printf("%d -> ",node->data);
-        node=node->next;
+void display(mll *node)
+{
+    while (node != NULL)
+    {
+        printf("%d -> ", node->data);
+        node = node->next;
     }
     printf("NULL\n");
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+#include <string>
 class Student {
 private:
     string name;
@@ -9,7 +9,8 @@ private:
 public:
     void getData() {
         cout << "Enter name: ";
-        cin >> name;
+        getchar();
+        getline(cin,name);
         cout << "Enter roll number: ";
         cin >> roll;
     }

@@ -1,100 +1,147 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct double_linked_list
-{
+
+// Define the doubly circular linked list node
+typedef struct double_linked_list {
     struct double_linked_list *prev;
     int data;
     struct double_linked_list *next;
 } dll;
-dll *traverse(dll *node)
-{
-    dll *prev;
-    while (node != NULL)
-    {
-        prev = node;
-        node = node->next;
+
+// Function to insert a node at the end
+void insert_end(dll **head, dll **tail, int data) {
+    dll *new_node = (dll *)malloc(sizeof(dll));
+    new_node->data = data;
+
+    if (*head == NULL) {
+        new_node->next = new_node->prev = new_node;
+        *head = *tail = new_node;
+    } else {
+        new_node->prev = *tail;
+        new_node->next = *head;
+        (*tail)->next = new_node;
+        (*head)->prev = new_node;
+        *tail = new_node;
     }
-    return prev;
 }
-dll *create_dll(dll **list1)
-{
-    dll *curr, *last;
-    curr = (dll *)malloc(sizeof(dll));
-    printf("Enter Data- ");
-    scanf("%d", &curr->data);
-    curr->prev = NULL;
-    curr->next = NULL;
-    if (*list1 == NULL)
-    {
-        *list1 = curr;
+
+// Function to display list forward
+void display_forward(dll *head) {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
     }
-    else
-    {
-        last = traverse(*list1);
-        last->next = curr;
-        curr->prev = last;
-    }
-    return curr;
+    dll *temp = head;
+    printf("Forward: ");
+    do {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    } while (temp != head);
+    printf("(head)\n");
 }
-void display_forward(dll *node)
-{
-    while (node != NULL)
-    {
-        printf("%d -> ", node->data);
-        node = node->next;
+
+// Function to display list backward
+void display_backward(dll *tail) {
+    if (tail == NULL) {
+        printf("List is empty.\n");
+        return;
     }
-    printf("NULL\n");
+    dll *temp = tail;
+    printf("Backward: ");
+    do {
+        printf("%d -> ", temp->data);
+        temp = temp->prev;
+    } while (temp != tail);
+    printf("(tail)\n");
 }
-void display_backward(dll *node)
-{
-    while (node != NULL)
-    {
-        printf("%d -> ", node->data);
-        node = node->prev;
-    }
-    printf("NULL\n");
-}
-void delete_any(dll *list1, int po)
-{
-    dll *temp = list1, *pre = NULL;
-    int count = 1;
-    if (po == 1)
-    {
-        temp->next = NULL;
+
+// Function to delete a node at a given position
+void delete_at_position(dll **head, dll **tail, int pos) {
+    if (*head == NULL || pos < 1) {
+        printf("List is empty or invalid position.\n");
         return;
     }
 
-    while (po != count && temp != NULL)
-    {
-        pre = temp;
-        count = count + 1;
-        temp = temp->next;
+    dll *temp = *head;
+    dll *prev = NULL;
+    int count = 1;
+
+    // Special case: only one node
+    if (*head == *tail && pos == 1) {
+        free(temp);
+        *head = *tail = NULL;
+        return;
     }
-    if (po == count)
-    {
-        pre->next = temp->next;
-        temp->next->prev = pre;
-        free(pre);
+
+    // Deleting head node
+    if (pos == 1) {
+        *head = temp->next;
+        (*head)->prev = *tail;
+        (*tail)->next = *head;
+        free(temp);
+        return;
+    }
+
+    // Traverse to the node to be deleted
+    while (count < pos && temp != *tail) {
+        prev = temp;
+        temp = temp->next;
+        count++;
+    }
+
+    // If position is valid
+    if (count == pos) {
+        prev->next = temp->next;
+        temp->next->prev = prev;
+
+        if (temp == *tail)
+            *tail = prev;
+
+        free(temp);
+    } else {
+        printf("Invalid position.\n");
     }
 }
-int main()
-{
-    dll *list = NULL, *last = NULL;
-    char ch;
-    int po;
-    do
-    {
-        last = create_dll(&list);
-        getchar();
-        printf("Do you want to continue- ");
-        scanf("%c", &ch);
-        fflush(stdin);
-    } while (ch == 'y' || ch == 'Y');
-    display_forward(list);
-    display_backward(last);
-    printf("Enter the position do want to  delete = ");
-    scanf("%d", &po);
-    delete_any(list, po);
-    display_forward(list);
-    display_backward(last);
+
+// Main function
+int main() {
+    dll *head = NULL, *tail = NULL;
+    int choice, data, pos;
+
+    while (1) {
+        printf("\n--- MENU ---\n");
+        printf("1. Insert at end\n");
+        printf("2. Delete at position\n");
+        printf("3. Display forward\n");
+        printf("4. Display backward\n");
+        printf("5. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insert_end(&head, &tail, data);
+                break;
+            case 2:
+                printf("Enter position to delete: ");
+                scanf("%d", &pos);
+                delete_at_position(&head, &tail, pos);
+                break;
+            case 3:
+                display_forward(head);
+                break;
+            case 4:
+                display_backward(tail);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
 }

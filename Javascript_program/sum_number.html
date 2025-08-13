@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum of digit using JavaScript</title>
+    <script type="text/javascript">
+        function Sum_digit()
+        {
+            let x,dg=0,sum=0;
+            x=Number(document.getElementById("text1").value);
+            while(x!=0)
+            {
+                dg=x%10;
+                sum =sum+dg;
+                x=Math.floor(x/10);
+            }
+            document.getElementById("text2").value=sum;
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <b>Enter a Number- </b><input type="number" id="text1" name="text1" >
+        <b>Sum of digit-</b><input type="number" id="text2" name="text2">
+        <input type="button" value="Press me" name="button" id="button" onclick="Sum_digit()"/>
+    </p>
+</body>
+</html>

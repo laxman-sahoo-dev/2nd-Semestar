@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
  
 dataset = {
     'year': [2020, 2021, 2022, 2023, 2024],
-    'covid_data': [25, 35, 45, 55, 65],
-    'heart_disease_data': [80, 400, 67, 99, 77]
+    'covid_data': [25, 35, 45,20, 10],
+    'heart_disease_data': [35, 40, 55, 60,65]
 }
 
 # Create DataFrame

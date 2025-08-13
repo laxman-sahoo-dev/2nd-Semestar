@@ -1,2 +1,13 @@
-import numpy as np
-arr=np.array([11,22,33,44,55,66])
+import array as ar
+arr=ar.array('i',[11,22,33,44,55,66])
+print(arr)
+arr.append(99)
+print(arr)
+arr.extend([99,98])
+print(arr)
+arr.remove(11)
+print(arr)
+arr.pop(2)
+print(arr)
+arr.insert(2,44)
+print(arr)

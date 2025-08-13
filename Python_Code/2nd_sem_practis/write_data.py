@@ -1,0 +1,8 @@
+fp=open("myfile3.txt","w")
+data=input("enter data-")
+fp.write(data)
+fp.close()
+fp=open("myfile3.txt","r")
+data=fp.read()
+print(data)
+fp.close()
